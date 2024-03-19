@@ -1,4 +1,4 @@
-const ApiKey = "c1bbd9ade823e6636c98bfaf1c27ad0f";
+const ApiKey = "enter your key";
 let call = ``;
 let call2 = ``;
 let call3 = ``;
@@ -17,7 +17,7 @@ const monthNames = [
   "December",
 ];
 
-function PrintGeolocation(dataG,latitude,longitude) {  
+function PrintGeolocation(dataG, latitude, longitude) {
   console.log(dataG);
 
   let lat1 = latitude + "";
@@ -34,16 +34,16 @@ function PrintGeolocation(dataG,latitude,longitude) {
     0,
     7
   )} longitude = ${lon1.substring(0, 7)} <br>
-                              Weather coordinatуs: latitude = ${lat2.substring(                                      0,                                     7
+                              Weather coordinatуs: latitude = ${lat2.substring(
+                                0,
+                                7
                               )} longitude = ${lon2.substring(0, 7)} <br>
                               it's ${dataG[0].name} ${dataG[0].state} ${
     dataG[0].country
   } `;
-
 }
 
-function PrintHourly(index,data,hourlyDate) {  
-
+function PrintHourly(index, data, hourlyDate) {
   return `<span class="d-inline-block text-center" style="margin: 5px;">time: ${hourlyDate.getHours()}:00<br>temp: ${
     data.hourly[index].temp
   } 
@@ -54,13 +54,11 @@ function PrintHourly(index,data,hourlyDate) {
     data.hourly[index].weather[0].description
   }
   <br><img src="https://openweathermap.org/img/wn/${
-      data.hourly[index].weather[0].icon
-    }.png" alt=""><br></span>`;
+    data.hourly[index].weather[0].icon
+  }.png" alt=""><br></span>`;
 }
 
-function PrintDayHourly(data) {  
-    
-
+function PrintDayHourly(data) {
   let currentDate = new Date();
   let nameDate = new Date(currentDate);
 
@@ -128,8 +126,8 @@ function PrintDayHourly(data) {
   >
   ${monthNames[nameDate.getMonth()]} ${nameDate.getDate()}
 <img src="https://openweathermap.org/img/wn/${
-  data.daily[2].weather[0].icon
-}.png" alt="">
+    data.daily[2].weather[0].icon
+  }.png" alt="">
   </button>
 </li>`;
 
@@ -139,7 +137,6 @@ function PrintDayHourly(data) {
                                           clouds: ${data.current.clouds} description: ${data.current.weather[0].description}</span>`;
 */
 
-
   todayTad.innerHTML = "";
   tab1.innerHTML = "";
   tab2.innerHTML = "";
@@ -148,11 +145,11 @@ function PrintDayHourly(data) {
 
   for (let index = 0; index < hourly.length - 2; index++) {
     if (hourlyDate.getDate() == currentDate.getDate()) {
-      todayTad.innerHTML += PrintHourly(index,data,hourlyDate);
+      todayTad.innerHTML += PrintHourly(index, data, hourlyDate);
     } else if (hourlyDate.getDate() == currentDate.getDate() + 1) {
-      tab1.innerHTML += PrintHourly(index,data,hourlyDate);
+      tab1.innerHTML += PrintHourly(index, data, hourlyDate);
     } else if (hourlyDate.getDate() == currentDate.getDate() + 2) {
-      tab2.innerHTML += PrintHourly(index,data,hourlyDate);
+      tab2.innerHTML += PrintHourly(index, data, hourlyDate);
     } else {
       console.log(`Error data`);
     }
@@ -170,16 +167,10 @@ function PrintDayHourly(data) {
   dayTab.innerHTML = "";
 
   for (let index = 0; index < daily.length; index++) {
-    
-
     dayTab.innerHTML += `<li class="nav-item" role="presentation">
-      <button class="nav-link ${index == 0 ? " active " : ""}" id="date${
-        index
-      }-tab" data-bs-toggle="tab" data-bs-target="#date${
-      index
-    }-tab-pane" type="button" role="tab" aria-controls="date${
-      index
-    }-tab-pane" 
+      <button class="nav-link ${
+        index == 0 ? " active " : ""
+      }" id="date${index}-tab" data-bs-toggle="tab" data-bs-target="#date${index}-tab-pane" type="button" role="tab" aria-controls="date${index}-tab-pane" 
       aria-selected="true">${
         monthNames[dailyDate.getMonth()]
       } ${dailyDate.getDate()}<img src="https://openweathermap.org/img/wn/${
@@ -208,7 +199,7 @@ function PrintDayHourly(data) {
 
                                           </span>
     </button></li>`;
-    dailyDate.setDate(dailyDate.getDate()+1);
+    dailyDate.setDate(dailyDate.getDate() + 1);
 
     /*
                                                   summary: ${
@@ -219,15 +210,13 @@ function PrintDayHourly(data) {
 }
 
 function PrintThreeHourly(dataDay) {
-  
-
   const dayTabContent = document.querySelector("#dayTabContent");
   let dataHourly = dataDay.list;
   let currentData = dataDay.list[0].dt_txt + "";
 
   dayTabContent.innerHTML = "";
 
-  for (let index = 0,indexDay = 0; index < dataHourly.length; indexDay++) {
+  for (let index = 0, indexDay = 0; index < dataHourly.length; indexDay++) {
     console.log(`index ${index} indexDay ${indexDay}`);
     dayTabContent.innerHTML += `<div
   class="tab-pane fade  ${index == 0 ? " show active " : ""}"
@@ -238,36 +227,39 @@ function PrintThreeHourly(dataDay) {
 >
 </div>  `;
 
-    const NewDayTabContent = document.querySelector(`#date${indexDay}-tab-pane`);
+    const NewDayTabContent = document.querySelector(
+      `#date${indexDay}-tab-pane`
+    );
 
-
-    for (;index < dataHourly.length; index++) {
+    for (; index < dataHourly.length; index++) {
       console.log(`index ${index} indexDay ${indexDay}`);
-            
-    let currentArrData = dataHourly[index].dt_txt + "";
 
-    if (currentData.substring(0,10) == currentArrData.substring(0,10)) {
-      let time = dataHourly[index].dt_txt + "";
-      NewDayTabContent.innerHTML += `
+      let currentArrData = dataHourly[index].dt_txt + "";
+
+      if (currentData.substring(0, 10) == currentArrData.substring(0, 10)) {
+        let time = dataHourly[index].dt_txt + "";
+        NewDayTabContent.innerHTML += `
           <span class="d-inline-block text-center">
-                                      time: ${time.substr(11,5)}<br>
+                                      time: ${time.substr(11, 5)}<br>
                                       
                                       temp: ${dataHourly[index].main.temp}<br>
-                                      humidity: ${dataHourly[index].main.humidity}<br>
-                                      wind speed: ${dataHourly[index].wind.speed}<br>
+                                      humidity: ${
+                                        dataHourly[index].main.humidity
+                                      }<br>
+                                      wind speed: ${
+                                        dataHourly[index].wind.speed
+                                      }<br>
                                       </span>
                                       `;
+      } else {
+        currentData = currentArrData;
+        break;
+      }
     }
-    else{
-      currentData = currentArrData;
-      break;
-    }
-    
-    }
-  }   
+  }
 }
 
-function PrintPage(latitude,longitude) {
+function PrintPage(latitude, longitude) {
   console.log(latitude);
   console.log(longitude);
 
@@ -285,48 +277,34 @@ function PrintPage(latitude,longitude) {
   console.log(call3);
 
   jQuery.getJSON(call, function (data) {
-
     PrintDayHourly(data);
-
 
     let q = `http://api.openweathermap.org/geo/1.0/reverse?lat=${data.lat}&lon=${data.lon}&limit=5&appid=${ApiKey}`;
     jQuery.getJSON(q, function (dataG) {
       //console.log(q);
-      PrintGeolocation(dataG,latitude,longitude);
+      PrintGeolocation(dataG, latitude, longitude);
     });
   });
 
   jQuery.getJSON(call3, function (dataDay) {
     PrintThreeHourly(dataDay);
-
   });
 }
-
-
-
-
 
 if (navigator.geolocation) {
   console.log(`geolocation is available`);
   navigator.geolocation.getCurrentPosition((position) => {
-
-    PrintPage(position.coords.latitude,position.coords.longitude);
-
-
+    PrintPage(position.coords.latitude, position.coords.longitude);
   });
 } else {
   console.log(`geolocation IS NOT available`);
 }
 
+const SearchBtn = document.querySelector("#SearchBtn");
 
-
-
-const SearchBtn = document.querySelector('#SearchBtn');
-
-SearchBtn.onclick = (e) => { 
-
+SearchBtn.onclick = (e) => {
   e.preventDefault();
-  const SearchText = document.querySelector('#SearchText');
+  const SearchText = document.querySelector("#SearchText");
 
   console.log(SearchText.value);
 
@@ -337,13 +315,8 @@ SearchBtn.onclick = (e) => {
     console.log(dataCityName);
 
     PrintPage(dataCityName[0].lat, dataCityName[0].lon);
-  }
-);
-
-
-}
-
-
+  });
+};
 
 /*
 !(function () {
