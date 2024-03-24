@@ -349,45 +349,25 @@ function initMap() {
   });
   map.attributionControl.setPrefix("");
 
-  map.addControl(
-    L.languageSelector({
-      languages: new Array(
-        L.langObject("en", "English", "openweathermap/example/mapicons/en.png"),
-        L.langObject("de", "Deutsch", "openweathermap/example/mapicons/de.png"),
-        L.langObject(
-          "fr",
-          "Français",
-          "openweathermap/example/mapicons/fr.png"
-        ),
-        L.langObject(
-          "it",
-          "Italiano",
-          "openweathermap/example/mapicons/it.png"
-        ),
-        L.langObject("es", "Español", "openweathermap/example/mapicons/es.png"),
-        L.langObject(
-          "ca",
-          "Català",
-          "openweathermap/example/mapicons/catalonia.png"
-        ),
-        L.langObject("ru", "Русский", "openweathermap/example/mapicons/ru.png"),
-        L.langObject(
-          "nl",
-          "Nederlands",
-          "openweathermap/example/mapicons/nl.png"
-        ),
-        L.langObject(
-          "pt_br",
-          "Português do Brasil",
-          "openweathermap/example/mapicons/br.png"
-        )
-      ),
-      callback: changeLanguage,
-      initialLanguage: localLang,
-      hideSelected: false,
-      vertical: false,
-    })
-  );
+  /*
+	map.addControl(L.languageSelector({
+		languages: new Array(
+			L.langObject('en', 'English', 'openweathermap/example/mapicons/en.png')
+		,	L.langObject('de', 'Deutsch', 'openweathermap/example/mapicons/de.png')
+		,	L.langObject('fr', 'Français', 'openweathermap/example/mapicons/fr.png')
+		,	L.langObject('it', 'Italiano', 'openweathermap/example/mapicons/it.png')
+		,	L.langObject('es', 'Español', 'openweathermap/example/mapicons/es.png')
+		,	L.langObject('ca', 'Català', 'openweathermap/example/mapicons/catalonia.png')
+		,	L.langObject('ru', 'Русский', 'openweathermap/example/mapicons/ru.png')
+		,	L.langObject('nl', 'Nederlands', 'openweathermap/example/mapicons/nl.png')
+		,	L.langObject('pt_br', 'Português do Brasil', 'openweathermap/example/mapicons/br.png')
+		),
+		callback: changeLanguage,
+		initialLanguage: localLang,
+		hideSelected: false,
+		vertical: false
+	}));
+	*/
 
   var baseMaps = {
     "OSM Standard": standard,
